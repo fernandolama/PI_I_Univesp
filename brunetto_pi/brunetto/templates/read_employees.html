@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}Lista de Colaboradores{% endblock %}
+{% block content %}
+<h2>Colaboradores Cadastrados</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th><a href="?order_by={% if current_order == 'name' %}{{ new_order }}{% else %}name{% endif %}">Nome</a></th>
+            <th>Número da Matrícula</th>
+            <th>Cargo Ocupado</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for employee in employees %}
+        <tr>
+            <td>{{ employee.name }}</td>
+            <td>{{ employee.registration_number }}</td>
+            <td>{{ employee.position }}</td>
+            <td>
+                <a href="{% url 'update_employee' employee.pk %}" class="button-link">Editar</a>
+                <a href="{% url 'delete_employee' employee.pk %}" class="button-link button-link-danger" onclick="return confirm('Tem certeza?')">Excluir</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<br>
+<a href="{% url 'create_employee' %}" class="btn btn-custom">Cadastrar Novo Colaborador</a>
+{% endblock %}

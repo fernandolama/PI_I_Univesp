@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Editar Posição{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h2>Editar Posição</h2>
+    
+    <form method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            {{ form.as_p }}
+        </div>
+
+        <button type="submit" class="btn btn-success">Salvar Alterações</button>
+    </form>
+</div>
+<br>
+<a href="{% url 'read_positions' %}" class="btn btn-custom">Voltar para Lista de Posições Cadastradas</a>
+{% endblock %}

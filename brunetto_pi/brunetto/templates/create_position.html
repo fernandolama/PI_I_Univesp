@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Nova Posição{% endblock %}
+{% block content %}
+<h2>Cadastrar Nova Posição</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Salvar</button>
+</form>
+<br>
+<a href="{% url 'read_positions' %}" class="btn btn-custom">Voltar para Lista de Posições Cadastradas</a>
+{% endblock %}

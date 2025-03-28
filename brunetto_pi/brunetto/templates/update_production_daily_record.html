@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% block title %}Editar Registro Diário{% endblock %}
+
+{% block content %}
+<h2>Editar Registro Diário de Produção</h2>
+
+<form method="post">
+    {% csrf_token %}
+    
+    <fieldset>
+        <legend>Registro Diário</legend>
+        {{ form.as_p }}
+    </fieldset>
+
+    <fieldset id="finished-pasta-formset">
+        <legend>Produto Acabado - Massas</legend>
+        <div class="formset-container">
+            {{ finished_pasta_formset.management_form }}  <!-- Django usa para controle do formset -->
+            {% for subform in finished_pasta_formset %}
+                <div class="form-boxr">
+                    {{ subform.as_p }}
+                </div>
+                <hr>
+            {% endfor %}
+        </div>
+
+    </fieldset>
+
+    <fieldset id="in-progress-pasta-formset">
+        <legend>Produto em Elaboração - Massas</legend>
+        <div class="formset-container">
+            {{ in_progress_pasta_formset.management_form }}  <!-- Django usa para controle do formset -->
+            {% for subform in in_progress_pasta_formset %}
+                <div class="form-boxr">
+                    {{ subform.as_p }}
+                </div>
+                <hr>
+            {% endfor %}
+        </div>
+
+    </fieldset>
+
+    <fieldset id="pasta-machine-formset">
+        <legend>Masseiras</legend>
+        <div class="formset-container">
+            {{ pasta_machine_formset.management_form }}  <!-- Django usa para controle do formset -->
+            {% for subform in pasta_machine_formset %}
+                <div class="form-boxr">
+                    {{ subform.as_p }}
+                </div>
+                <hr>
+            {% endfor %}
+        </div>
+
+    </fieldset>
+
+    <fieldset id="pasta-cooking-formset">
+        <legend>Cozimento</legend>
+        <div class="formset-container">
+            {{ pasta_cooking_formset.management_form }}  <!-- Django usa para controle do formset -->
+            {% for subform in pasta_cooking_formset %}
+                <div class="form-boxr">
+                    {{ subform.as_p }}
+                </div>
+                <hr>
+            {% endfor %}
+        </div>
+
+    </fieldset>
+
+    <fieldset id="pasta-stuffing-formset">
+        <legend>Recheios</legend>
+        <div class="formset-container">
+            {{ pasta_stuffing_formset.management_form }}  <!-- Django usa para controle do formset -->
+            {% for subform in pasta_stuffing_formset %}
+                <div class="form-boxr">
+                    {{ subform.as_p }}
+                </div>
+                <hr>
+            {% endfor %}
+        </div>
+
+    </fieldset>
+
+    <button type="submit" class="btn btn-success">Salvar Alterações</button>
+</form>
+
+{% endblock %}
