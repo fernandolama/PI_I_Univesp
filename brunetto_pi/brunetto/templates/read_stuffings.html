@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Lista de Recheios{% endblock %}
+{% block content %}
+<h2>Recheios Cadastrados</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th><a href="?order_by={% if current_order == 'name' %}{{ new_order }}{% else %}name{% endif %}">Nome</a></th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for stuffing in stuffings %}
+        <tr>
+            <td>{{ stuffing.name }}</td>
+            <td>
+                <a href="{% url 'update_stuffing' stuffing.pk %}" class="button-link">Editar</a>
+                <a href="{% url 'delete_stuffing' stuffing.pk %}" class="button-link button-link-danger" onclick="return confirm('Tem certeza?')">Excluir</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<br>
+<a href="{% url 'create_stuffing' %}" class="btn btn-custom">Cadastrar Novo Recheio</a>
+{% endblock %}

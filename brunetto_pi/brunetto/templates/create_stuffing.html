@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Novo Recheio{% endblock %}
+{% block content %}
+<h2>Cadastrar Novo Recheio</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Salvar</button>
+</form>
+<br>
+<a href="{% url 'read_stuffings' %}" class="btn btn-custom">Voltar para Lista de Recheios Cadastrados</a>
+{% endblock %}

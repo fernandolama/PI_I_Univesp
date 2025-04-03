@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Lista de Posições{% endblock %}
+{% block content %}
+<h2>Posições Cadastradas</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th><a href="?order_by={% if current_order == 'name' %}{{ new_order }}{% else %}name{% endif %}">Nome</a></th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for position in positions %}
+        <tr>
+            <td>{{ position.name }}</td>
+            <td>
+                <a href="{% url 'update_position' position.pk %}" class="button-link">Editar</a>
+                <a href="{% url 'delete_position' position.pk %}" class="button-link button-link-danger" onclick="return confirm('Tem certeza?')">Excluir</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<br>
+<a href="{% url 'create_position' %}" class="btn btn-custom">Cadastrar Nova Posição</a>
+{% endblock %}

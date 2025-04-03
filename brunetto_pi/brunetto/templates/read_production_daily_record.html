@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% block title %}Registro Diário de Produção{% endblock %}
+{% block content %}
+<h2>Registro Diário de Produção</h2>
+
+<p><strong>Autor:</strong> {{ production_record.author }}</p>
+<p><strong>Líder de Produção:</strong> {{ production_record.production_leader }}</p>
+<p><strong>Data:</strong> {{ production_record.date|date:"d/m/Y" }}</p>
+
+<h3>Massas Acabadas</h3>
+{% if finished_pasta_formset.forms|length > 0 %}
+<div class=".formset-container">
+    <table class="table">
+        <tr>
+            <th>Massa</th>
+            <th>Quantidade</th>
+            <th>Desperdício</th>
+        </tr>
+        {% for form in finished_pasta_formset %}
+        {% if form.instance.finished_pasta or form.instance.quantity or form.instance.waste %}
+        <tr>
+            <td>{{ form.instance.finished_pasta }}</td>
+            <td>{{ form.instance.quantity|default:0 }}</td>
+            <td>{{ form.instance.waste|default:0 }}</td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+    </table>
+</div>
+{% endif %}
+
+<h3>Massas em Elaboração</h3>
+{% if in_progress_pasta_formset.forms|length > 0 %}
+<div class=".formset-container">
+    <table class="table">
+        <tr>
+            <th>Colaborador</th>
+            <th>Massa</th>
+            <th>Quantidade</th>
+        </tr>
+        {% for form in in_progress_pasta_formset %}
+        {% if form.instance.employee or form.instance.in_progress_pasta or form.instance.quantity %}
+        <tr>
+            <td>{{ form.instance.employee }}</td>
+            <td>{{ form.instance.in_progress_pasta }}</td>
+            <td>{{ form.instance.quantity|default:0 }}</td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+    </table>
+</div>
+{% endif %}
+
+<h3>Masseiras</h3>
+{% if pasta_machine_formset.forms|length > 0 %}
+<div class=".formset-container">
+    <table class="table">
+        <tr>
+            <th>Colaborador</th>
+            <th>Masseiras</th>
+        </tr>
+        {% for form in pasta_machine_formset %}
+        {% if form.instance.employee or form.instance.machine %}
+        <tr>
+            <td>{{ form.instance.employee }}</td>
+            <td>{{ form.instance.machine|default:0 }}</td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+    </table>
+</div>
+{% endif %}
+
+<h3>Cozimento</h3>
+{% if pasta_cooking_formset.forms|length > 0 %}
+<div class=".formset-container">
+    <table class="table">
+        <tr>
+            <th>Colaborador</th>
+            <th>Cozimento</th>
+            <th>Quantidade</th>
+            <th>Descarte</th>
+        </tr>
+        {% for form in pasta_cooking_formset %}
+        {% if form.instance.employee or form.instance.pasta_cooking or form.instance.quantitity or form.instance.discard %}
+        <tr>
+            <td>{{ form.instance.employee }}</td>
+            <td>{{ form.instance.pasta_cooking }}</td>            
+            <td>{{ form.instance.quantity|default:0 }}</td>
+            <td>{{ form.instance.discard|default:0 }}</td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+    </table>
+</div>
+{% endif %}
+
+<h3>Recheio</h3>
+{% if pasta_stuffing_formset.forms|length > 0 %}
+<div class=".formset-container">
+    <table class="table">
+        <tr>
+            <th>Colaborador</th>
+            <th>Recheio</th>
+            <th>Receitas</th>
+        </tr>
+        {% for form in pasta_stuffing_formset %}
+        {% if form.instance.employee or form.instance.stuffing or form.instance.recipes %}
+        <tr>
+            <td>{{ form.instance.employee }}</td>
+            <td>{{ form.instance.stuffing }}</td>            
+            <td>{{ form.instance.recipes|default:0 }}</td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+    </table>
+</div>
+{% endif %}
+
+
+<br>
+<a href="{% url 'list_production_daily_records' %}" class="btn btn-custom">Voltar para a Lista de Registros Diários de Produção</a>
+
+    
+{% endblock %}
