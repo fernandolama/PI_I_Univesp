@@ -1,0 +1,143 @@
+V/* Reset de margens e preenchimentos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Corpo da página */
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+/* Cabeçalho */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 15px 0;
+}
+
+header .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header h1 a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.0em;
+}
+
+header nav ul {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+header nav ul li a:hover {
+    background-color: #555;
+}
+
+/* Conteúdo Principal */
+main.container {
+    flex: 1;
+    max-width: 1100px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+/* Tabela de Clientes */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+/* Rodapé */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 0.9em;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Botões */
+.button-link {
+    display: inline-block;
+    padding: 6px 12px;
+    color: #fff;
+    background-color: #007bff; /* Cor para "Editar" */
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.875em;
+    margin-right: 5px;
+}
+
+.button-link-danger {
+    background-color: #dc3545; /* Cor para "Excluir" */
+}
+
+.button-link:hover {
+    opacity: 0.9;
+}
+
+.btn-custom {
+    display: inline-block;
+    padding: 6px 12px;
+    color: #fff;
+    background-color: #4CAF50; /* Cor para "Adcionar novo" */
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.875em;
+    margin-right: 5px;
+}
+
+.btn-custom:hover {
+    opacity: 0.9;
+}
+
+/* Espaçamento vertical */
+.my-5 {
+    margin-top: 3rem !important;
+    margin-bottom: 3rem !important;
+}
+
+/* Card com sombra */
+.card {
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.card.shadow {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
