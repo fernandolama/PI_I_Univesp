@@ -8,7 +8,7 @@ from .serializers import (
 
 # Endpoints para Position
 class PositionListCreateAPIView(generics.ListCreateAPIView):
-    queryset = Position.objects.all()
+    queryset = Position.objects.all().order_by('name')
     serializer_class = PositionSerializer
 
 class PositionRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
@@ -17,7 +17,7 @@ class PositionRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView
 
 # Endpoints para Employee
 class EmployeeListAPIView(generics.ListCreateAPIView):
-    queryset = Employee.objects.all()
+    queryset = Employee.objects.all().order_by('name')
     serializer_class = GetEmployeeSerializer
     
 class EmployeeRetrieveAPIView(generics.RetrieveAPIView):
@@ -27,7 +27,7 @@ class EmployeeRetrieveAPIView(generics.RetrieveAPIView):
 
 # Endpoints para Employee
 class EmployeeListCreateAPIView(generics.ListCreateAPIView):
-    queryset = Employee.objects.all()
+    queryset = Employee.objects.all().order_by('name')
     serializer_class = EmployeeSerializer
 
 class EmployeeRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
@@ -35,12 +35,12 @@ class EmployeeRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView
     serializer_class = EmployeeSerializer
     
 class RegistrationNumberListAPIView(generics.ListAPIView):
-    queryset = Employee.objects.all()
+    queryset = Employee.objects.all().order_by('name')
     serializer_class = RegistrationNumberSerializer
 
 # Endpoints para Pasta
 class PastaListCreateAPIView(generics.ListCreateAPIView):
-    queryset = Pasta.objects.all()
+    queryset = Pasta.objects.all().order_by('name')
     serializer_class = PastaSerializer
 
 class PastaRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
@@ -49,7 +49,7 @@ class PastaRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
 
 # Endpoints para Stuffing
 class StuffingListCreateAPIView(generics.ListCreateAPIView):
-    queryset = Stuffing.objects.all()
+    queryset = Stuffing.objects.all().order_by('name')
     serializer_class = StuffingSerializer
 
 class StuffingRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
@@ -64,11 +64,9 @@ class ProductionDailyRecordsListCreateAPIView(generics.ListCreateAPIView):
 class ProductionDailyRecordsRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = ProductionDailyRecord.objects.all()
     serializer_class = ProductionDailyRecordsSerializer
-  
-  
     
 class ProductionDailyRecordsCompleteListCreateAPIView(generics.ListCreateAPIView):
-    queryset = ProductionDailyRecord.objects.all()
+    queryset = ProductionDailyRecord.objects.all().order_by('-date')
     serializer_class = ProductionDailyRecordsCompleteSerializer
 
 class ProductionDailyRecordsCompleteRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
@@ -91,8 +89,6 @@ class ProductionDailyRecordCompleteListCreateAPIView(generics.ListCreateAPIView)
 class ProductionDailyRecordCompleteRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = ProductionDailyRecord.objects.all()
     serializer_class = ProductionDailyRecordCompleteSerializer    
-
-
 
 # Endpoints para FinishedPasta
 class FinishedPastaListCreateAPIView(generics.ListCreateAPIView):
