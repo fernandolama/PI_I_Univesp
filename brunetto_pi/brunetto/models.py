@@ -4,7 +4,7 @@ from django.utils import timezone
 
 class BaseModel(models.Model):
     created_at = models.DateTimeField(default=timezone.now)
-    updated_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now=True) 
 
     class Meta:
         abstract = True
@@ -17,6 +17,7 @@ class Position(BaseModel):
         return self.name
     
 class Employee(BaseModel):
+    
     name = models.CharField(max_length=100)
     registration_number = models.PositiveIntegerField(unique=True)
     position = models.ForeignKey(Position, on_delete=models.CASCADE, related_name='employees')
@@ -35,6 +36,8 @@ class Stuffing(BaseModel):
 
     def __str__(self):
         return self.name
+    
+
 
 class ProductionDailyRecord(BaseModel):
     author = models.ForeignKey(Employee, on_delete=models.CASCADE, related_name='authored_records')
